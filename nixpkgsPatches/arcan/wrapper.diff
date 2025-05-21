@@ -1,0 +1,10 @@
+--- a/pkgs/by-name/ar/arcan/wrapper.nix
++++ b/pkgs/by-name/ar/arcan/wrapper.nix
+@@ -2,2 +2,3 @@
+   arcan,
++  inotify-tools,
+   makeWrapper,
+@@ -18,2 +19,3 @@
+       wrapProgram $prog \
++        --prefix PATH ":" "${inotify-tools}/bin" \
+         --prefix PATH ":" "${placeholder "out"}/bin" \
