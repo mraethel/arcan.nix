@@ -20,7 +20,7 @@ final: prev: {
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/cat9";
       rev = "c4ebf5087bd17c9c9a732220c913042ee3957e9a";
-      hash = "sha256-Yx2CXNVkGu8ryGXDEq9RgiYR01ceBQ/4jdRWub7la84=";
+      hash = "sha256-I4LvjxVcz7KYocISa/75OPAbxUZ6jArLfHhjVfRVNzY=";
     };
   });
   durden = prev.durden.overrideAttrs (_: {
