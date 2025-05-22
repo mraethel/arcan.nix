@@ -19,15 +19,24 @@ final: prev: {
   cat9 = prev.cat9.overrideAttrs (_: {
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/cat9";
-      rev = "bfc1bf35e6";
+      rev = "c4ebf5087bd17c9c9a732220c913042ee3957e9a";
       hash = "sha256-Yx2CXNVkGu8ryGXDEq9RgiYR01ceBQ/4jdRWub7la84=";
     };
   });
   durden = prev.durden.overrideAttrs (_: {
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/durden";
-      rev = "88f8455534";
+      rev = "88f8455534c6117c1171fa50782e1974bc4a667f";
       hash = "sha256-AEbrXBt4d0C7HxpDb2IL75vOYK+A4N3NDQLbb5F9g0M=";
     };
+  });
+  xarcan = prev.xarcan.overrideAttrs (prevAttrs: {
+    src = final.fetchFromGitHub {
+      owner = "letoram";
+      repo = "xarcan";
+      rev = "3e1f52252582d9aff5fb9f09ef6f1182813467b2";
+      hash = "sha256-lZRPCzL3MwUgsZGg9kmBmwsHp16H5AQDbHeVTAmKfm4=";
+    };
+    version = "2025-02-25";
   });
 }

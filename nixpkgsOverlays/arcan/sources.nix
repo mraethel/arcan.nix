@@ -3,11 +3,11 @@
 }: {
   letoram-arcan = rec {
     pname = "arcan";
-    version = "0.7.0.1";
+    version = "0.7.0.2";
 
     src = fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/arcan";
-      rev = version;
+      rev = "9ca7d1d099c6da2f32f2da0f8cf3864a28a950e1";
       hash = "sha256-AbIMZOyEvRQzlmNetImLnBBoSaFUsy4k1NNSO0mI8FI=";
     };
   };
