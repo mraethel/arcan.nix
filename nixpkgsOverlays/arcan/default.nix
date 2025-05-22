@@ -1,11 +1,5 @@
 final: prev: {
-  arcan = (prev.arcan.override {
-    sources = final.callPackage ./sources.nix { };
-    useBuiltinLua = false;
-    useStaticLibuvc = false;
-    useStaticOpenAL = false;
-    useStaticSqlite = false;
-  }).overrideAttrs (prevAttrs: {
+  arcan = (prev.arcan.overrideAttrs (prevAttrs: {
     buildInputs = prevAttrs.buildInputs ++ (with final; [
       libunwind
       libuvc
@@ -15,7 +9,13 @@ final: prev: {
       sqlite
     ]);
     patches = [ ];
-  });
+  })).override {
+    sources = final.callPackage ./sources.nix { };
+    useBuiltinLua = false;
+    useStaticLibuvc = false;
+    useStaticOpenAL = false;
+    useStaticSqlite = false;
+  };
   cat9 = prev.cat9.overrideAttrs (_: {
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/cat9";
