@@ -1,0 +1,8 @@
+--- a/distr/durden
++++ b/distr/durden
+@@ -101 +101 @@
+-		if arcan ${distargs} -b "$applname" "$applname" "$@" >"${arcan_logpath}/${applname}_${starttime}.log" 2>&1; then
++		if /bin/arcan ${distargs} -b "$applname" "$applname" "$@" >"${arcan_logpath}/${applname}_${starttime}.log" 2>&1; then
+@@ -105 +105 @@
+-		if arcan ${distargs} -b "$applname" "$applname" "$@"; then
++		if /bin/arcan ${distargs} -b "$applname" "$applname" "$@"; then

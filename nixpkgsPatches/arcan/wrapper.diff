@@ -1,10 +1,13 @@
 --- a/pkgs/by-name/ar/arcan/wrapper.nix
 +++ b/pkgs/by-name/ar/arcan/wrapper.nix
-@@ -2,2 +2,3 @@
-   arcan,
+@@ -2,0 +3 @@
 +  inotify-tools,
-   makeWrapper,
-@@ -18,2 +19,3 @@
-       wrapProgram $prog \
+@@ -18,0 +20 @@
 +        --prefix PATH ":" "${inotify-tools}/bin" \
-         --prefix PATH ":" "${placeholder "out"}/bin" \
+@@ -20 +21,0 @@
+-        --set ARCAN_APPLBASEPATH "${placeholder "out"}/share/arcan/appl/" \
+@@ -22,3 +23 @@
+-        --set ARCAN_LIBPATH "${placeholder "out"}/lib/" \
+-        --set ARCAN_RESOURCEPATH "${placeholder "out"}/share/arcan/resources/" \
+-        --set ARCAN_SCRIPTPATH "${placeholder "out"}/share/arcan/scripts/"
++        --set ARCAN_LIBPATH "${placeholder "out"}/lib/"
