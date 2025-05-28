@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "arcanNeovim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708451772,
+        "narHash": "sha256-oKTE27aOjm6TKaIg6/wQx2mDfIf4Z/FhQ9lucgPdo6c=",
+        "owner": "letoram",
+        "repo": "nvim-arcan",
+        "rev": "fd5931d45da231e2465f2acf45ece39085efeefb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "letoram",
+        "repo": "nvim-arcan",
+        "type": "github"
+      }
+    },
     "flakeUtils": {
       "inputs": {
         "systems": [
@@ -38,6 +54,7 @@
     },
     "root": {
       "inputs": {
+        "arcanNeovim": "arcanNeovim",
         "flakeUtils": "flakeUtils",
         "nixpkgs": "nixpkgs",
         "systems": "systems"

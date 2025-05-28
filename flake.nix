@@ -1,5 +1,9 @@
 {
   inputs = {
+    arcanNeovim = {
+      url = "github:letoram/nvim-arcan";
+      flake = false;
+    };
     flakeUtils = {
       inputs.systems.follows = "systems";
       url = "github:numtide/flake-utils";
@@ -8,7 +12,8 @@
     systems.url = "github:nix-systems/x86_64-linux";
   };
   outputs =
-  { flakeUtils
+  { arcanNeovim
+  , flakeUtils
   , nixpkgs
   , self
   , ...
@@ -26,5 +31,9 @@
       inherit system;
       overlays = with self.overlays; [ arcan ];
     };
-  in { packages = pkgs; });
+  in {
+    packages = pkgs // {
+      nvim-arcan = pkgs.callPackage packages/nvim-arcan { src = arcanNeovim; };
+    }; 
+  });
 }
