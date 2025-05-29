@@ -18,7 +18,7 @@
   , self
   , ...
   }: {
-    overlays.arcan = import nixpkgsOverlays/arcan;
+    overlays.arcan = import nixpkgsOverlays/arcan self;
     patches.arcan = nixpkgsPatches/arcan/wrapper.diff;
   } // flakeUtils.lib.eachDefaultSystem (system: let
     nixpkgs-patched = (import nixpkgs { inherit system; })
@@ -32,7 +32,8 @@
       overlays = with self.overlays; [ arcan ];
     };
   in {
-    packages = pkgs // {
+    legacyPackages = pkgs;
+    packages = {
       nvim-arcan = pkgs.callPackage packages/nvim-arcan { src = arcanNeovim; };
     }; 
   });

@@ -1,4 +1,5 @@
-final: prev: {
+self: final: prev: {
+  inherit (self.packages.${final.system}) nvim-arcan;
   arcan = (prev.arcan.overrideAttrs (prevAttrs: {
     buildInputs = prevAttrs.buildInputs ++ (with final; [
       libunwind

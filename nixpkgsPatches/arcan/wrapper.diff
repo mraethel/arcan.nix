@@ -2,11 +2,14 @@
 +++ b/pkgs/by-name/ar/arcan/wrapper.nix
 @@ -2,0 +3 @@
 +  inotify-tools,
-@@ -18,0 +20 @@
+@@ -3,0 +5 @@
++  nvim-arcan,
+@@ -18,0 +21,2 @@
 +        --prefix PATH ":" "${inotify-tools}/bin" \
-@@ -20 +21,0 @@
++        --prefix PATH ":" "${nvim-arcan}/bin" \
+@@ -20 +23,0 @@
 -        --set ARCAN_APPLBASEPATH "${placeholder "out"}/share/arcan/appl/" \
-@@ -22,3 +23 @@
+@@ -22,3 +25 @@
 -        --set ARCAN_LIBPATH "${placeholder "out"}/lib/" \
 -        --set ARCAN_RESOURCEPATH "${placeholder "out"}/share/arcan/resources/" \
 -        --set ARCAN_SCRIPTPATH "${placeholder "out"}/share/arcan/scripts/"
