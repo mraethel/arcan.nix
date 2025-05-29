@@ -1,5 +1,4 @@
 { arcan
-, makeWrapper
 , meson
 , msgpack
 , ninja
@@ -13,7 +12,6 @@
   inherit src;
 
   nativeBuildInputs = [
-    makeWrapper
     meson
     ninja
     pkg-config
