@@ -1,15 +1,26 @@
 --- a/pkgs/by-name/ar/arcan/wrapper.nix
 +++ b/pkgs/by-name/ar/arcan/wrapper.nix
-@@ -2,0 +3 @@
+@@ -2,0 +3,5 @@
++  doas,
++  fossil,
++  gdb,
 +  inotify-tools,
-@@ -3,0 +5 @@
++  lldb,
+@@ -3,0 +9 @@
 +  nvim-arcan,
-@@ -18,0 +21,2 @@
+@@ -4,0 +11 @@
++  wpa_supplicant,
+@@ -18,0 +26,7 @@
 +        --prefix PATH ":" "${inotify-tools}/bin" \
++        --prefix PATH ":" "${doas}/bin" \
++        --prefix PATH ":" "${fossil}/bin" \
++        --prefix PATH ":" "${gdb}/bin" \
++        --prefix PATH ":" "${lldb}/bin" \
++        --prefix PATH ":" "${wpa_supplicant}/bin" \
 +        --prefix PATH ":" "${nvim-arcan}/bin" \
-@@ -20 +23,0 @@
+@@ -20 +33,0 @@
 -        --set ARCAN_APPLBASEPATH "${placeholder "out"}/share/arcan/appl/" \
-@@ -22,3 +25 @@
+@@ -22,3 +35 @@
 -        --set ARCAN_LIBPATH "${placeholder "out"}/lib/" \
 -        --set ARCAN_RESOURCEPATH "${placeholder "out"}/share/arcan/resources/" \
 -        --set ARCAN_SCRIPTPATH "${placeholder "out"}/share/arcan/scripts/"
