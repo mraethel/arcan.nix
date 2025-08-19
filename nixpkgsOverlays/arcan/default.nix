@@ -23,10 +23,10 @@ self: final: prev: {
     '';
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/cat9";
-      rev = "c4ebf5087bd17c9c9a732220c913042ee3957e9a";
-      hash = "sha256-I4LvjxVcz7KYocISa/75OPAbxUZ6jArLfHhjVfRVNzY=";
+      rev = "459b0141c2e0f2b0";
+      hash = "sha256-w+EOl49Cc6I+/i3TSNpbKjT9a2gXbop0YEu/eRckV+M=";
     };
-    version = "2025-05-19";
+    version = "2025-08-17";
   });
   durden = prev.durden.overrideAttrs (_: {
     installPhase = ''
@@ -48,10 +48,10 @@ self: final: prev: {
     '';
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/durden";
-      rev = "88f8455534c6117c1171fa50782e1974bc4a667f";
-      hash = "sha256-AEbrXBt4d0C7HxpDb2IL75vOYK+A4N3NDQLbb5F9g0M=";
+      rev = "5a137ecd752ac854";
+      hash = "sha256-twnuOW4tqwLeU19+JiPJuHb9VpGv8EeHvNUQZhvGwCs=";
     };
-    version = "2025-03-12";
+    version = "2025-08-10";
   });
   xarcan = prev.xarcan.overrideAttrs (prevAttrs: {
     src = final.fetchFromGitHub {

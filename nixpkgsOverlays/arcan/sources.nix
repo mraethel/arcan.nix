@@ -7,8 +7,8 @@
 
     src = fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/arcan";
-      rev = "9ca7d1d099c6da2f32f2da0f8cf3864a28a950e1";
-      hash = "sha256-32Ley/l0w3/nxeowqZTdT2ld6hytEUWL6cBRAeCqwGQ=";
+      rev = "fa1528c3641b0d3e";
+      hash = "sha256-W3lUBspYadDSFHnLf82CSLW3KYOeRrYVL5areKMHTDc=";
     };
   };
 
