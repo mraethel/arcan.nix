@@ -48,8 +48,8 @@ self: final: prev: {
     '';
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/durden";
-      rev = "5a137ecd752ac854";
-      hash = "sha256-twnuOW4tqwLeU19+JiPJuHb9VpGv8EeHvNUQZhvGwCs=";
+      rev = "84080a3458cd2ad2";
+      hash = "sha256-/56mYsmyzOLut7tvpyL8fxPjvJv+yJ5jzCYYsNoeCws=";
     };
     version = "2025-08-10";
   });
