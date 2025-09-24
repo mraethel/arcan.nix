@@ -23,8 +23,8 @@ self: final: prev: {
     '';
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/cat9";
-      rev = "459b0141c2e0f2b0";
-      hash = "sha256-w+EOl49Cc6I+/i3TSNpbKjT9a2gXbop0YEu/eRckV+M=";
+      rev = "e7fc5ef3a6d81a8a";
+      hash = "sha256-84MM4ZBkJjUJ4dDyiCkAdNz9OOPVpCNEvpaBWGIL0+U=";
     };
     version = "2025-08-17";
   });
@@ -48,8 +48,8 @@ self: final: prev: {
     '';
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/durden";
-      rev = "84080a3458cd2ad2";
-      hash = "sha256-/56mYsmyzOLut7tvpyL8fxPjvJv+yJ5jzCYYsNoeCws=";
+      rev = "9d499e84dc661e0f";
+      hash = "sha256-PH799/6EVjSsCA7q2yny2USUhWIvYRxFrdYHJzCROfQ=";
     };
     version = "2025-08-10";
   });
