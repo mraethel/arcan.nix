@@ -18,10 +18,3 @@
 +        --prefix PATH ":" "${lldb}/bin" \
 +        --prefix PATH ":" "${wpa_supplicant}/bin" \
 +        --prefix PATH ":" "${nvim-arcan}/bin" \
-@@ -20 +33,0 @@
--        --set ARCAN_APPLBASEPATH "${placeholder "out"}/share/arcan/appl/" \
-@@ -22,3 +35 @@
--        --set ARCAN_LIBPATH "${placeholder "out"}/lib/" \
--        --set ARCAN_RESOURCEPATH "${placeholder "out"}/share/arcan/resources/" \
--        --set ARCAN_SCRIPTPATH "${placeholder "out"}/share/arcan/scripts/"
-+        --set ARCAN_LIBPATH "${placeholder "out"}/lib/"
