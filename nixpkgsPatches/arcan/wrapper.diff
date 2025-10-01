@@ -18,3 +18,5 @@
 +        --prefix PATH ":" "${lldb}/bin" \
 +        --prefix PATH ":" "${wpa_supplicant}/bin" \
 +        --prefix PATH ":" "${nvim-arcan}/bin" \
+@@ -19,0 +34,1 @@
++        --set LASH_BASE "${placeholder "out"}/share/arcan/lash" \

@@ -16,7 +16,7 @@ in {
       loginShell = {
         enable = lib.mkEnableOption "loginShell";
         tty = lib.mkOption {
-          default = 2;
+          default = 1;
           type = lib.types.ints.between 1 10;
         };
         appl = lib.mkOption {

@@ -16,5 +16,9 @@ in {
     enable = true;
     loginShell.enable = true;
     package = arcanPkgs.arcan-wrapped;
+    xarcan = {
+      enable = true;
+      package = arcanPkgs.xarcan;
+    };
   };
 }

@@ -23,8 +23,9 @@
       options = rec {
         arcan = import nixosModules/options/arcan;
         cat9 = import nixosModules/options/cat9;
-        default.imports = [ arcan cat9 durden ];
+        default.imports = [ arcan cat9 durden xarcan ];
         durden = import nixosModules/options/durden;
+        xarcan = import nixosModules/options/xarcan;
       };
     };
     overlays.arcan = import nixpkgsOverlays/arcan self;
