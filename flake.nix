@@ -18,6 +18,15 @@
   , self
   , ...
   }: {
+    nixosModules = {
+      config.default = import nixosModules/config;
+      options = rec {
+        arcan = import nixosModules/options/arcan;
+        cat9 = import nixosModules/options/cat9;
+        default.imports = [ arcan cat9 durden ];
+        durden = import nixosModules/options/durden;
+      };
+    };
     overlays.arcan = import nixpkgsOverlays/arcan self;
     patches.arcan = nixpkgsPatches/arcan/wrapper.diff;
   } // flakeUtils.lib.eachDefaultSystem (system: let
