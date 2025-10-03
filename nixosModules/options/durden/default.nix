@@ -6,6 +6,9 @@
 }:
 let
   cfg = config.programs.arcan.durden;
+  toLuaFile =
+    attrs: pkgs.writeTextDir "share/arcan/appl/durden/nixos.lua"
+      "return ${lib.generators.toLua { } attrs};";
 in
 {
   options.programs.arcan.durden = {
@@ -16,5 +19,8 @@ in
     enable = lib.mkEnableOption "Durden";
     package = lib.mkPackageOption pkgs "durden" { };
   };
-  config.programs.arcan.appls = lib.mkIf cfg.enable [ cfg.package ];
+  config.programs.arcan.appls = lib.mkIf cfg.enable [
+    cfg.package
+    (toLuaFile cfg.config)
+  ];
 }

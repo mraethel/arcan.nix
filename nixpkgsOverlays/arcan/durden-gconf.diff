@@ -1,0 +1,16 @@
+--- ./durden/gconf.lua
++++ ./durden/gconf.lua
+@@ -297,0 +298,13 @@
++local nixos = system_load("nixos.lua",false)();
++
++function gconfig_nixos()
++  if (nixos == nil) then
++    return
++  end
++
++  for k,v in pairs(nixos) do
++    defaults[k] = v
++  end
++end
++
++gconfig_nixos();
