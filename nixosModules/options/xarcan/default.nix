@@ -1,13 +1,16 @@
-{ config
-, lib
-, pkgs
-, ...
-}: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
   cfg = config.programs.arcan.xarcan;
-in {
+in
+{
   options.programs.arcan.xarcan = {
     enable = lib.mkEnableOption "Xarcan";
-    package = lib.mkPackageOption pkgs "xarcan" {};
+    package = lib.mkPackageOption pkgs "xarcan" { };
     #
     # For using wmaker this would be great.
     #

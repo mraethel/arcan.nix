@@ -1,5 +1,7 @@
-{ fetchfossil
-}: {
+{
+  fetchfossil,
+}:
+{
   letoram-arcan = {
     pname = "arcan";
     version = "0.7.0.2";

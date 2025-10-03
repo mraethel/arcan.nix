@@ -1,9 +1,12 @@
-{ arcan
-, pkgs
-, ...
-}: let
-  arcanPkgs = arcan.legacyPackages.${ pkgs.system };
-in {
+{
+  arcan,
+  pkgs,
+  ...
+}:
+let
+  arcanPkgs = arcan.legacyPackages.${pkgs.system};
+in
+{
   programs.arcan = {
     cat9 = {
       enable = true;
