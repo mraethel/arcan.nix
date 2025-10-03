@@ -6,6 +6,10 @@
   cfg = config.programs.arcan.durden;
 in {
   options.programs.arcan.durden = {
+    config = lib.mkOption {
+      default = { };
+      type = lib.types.attrs;
+    };
     enable = lib.mkEnableOption "Durden";
     package = lib.mkPackageOption pkgs "durden" {};
   };
