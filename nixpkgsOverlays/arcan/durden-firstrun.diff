@@ -1,0 +1,5 @@
+--- ./durden/firstrun.lua
++++ ./durden/firstrun.lua
+@@ -20,0 +21,2 @@
++system_load("firstrun-nixos.lua")();
++

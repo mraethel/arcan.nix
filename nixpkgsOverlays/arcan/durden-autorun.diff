@@ -1,0 +1,5 @@
+--- ./durden/autorun.lua
++++ ./durden/autorun.lua
+@@ -11,0 +12,2 @@
++system_load("autorun-nixos.lua")();
++

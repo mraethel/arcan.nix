@@ -42,7 +42,11 @@ self: final: prev: {
     version = "2025-08-17";
   });
   durden = prev.durden.overrideAttrs (_: {
-    patches = [ ./durden-gconf.diff ];
+    patches = [
+      ./durden-autorun.diff
+      ./durden-firstrun.diff
+      ./durden-gconf.diff
+    ];
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/durden";
       rev = "9d499e84dc661e0f";
