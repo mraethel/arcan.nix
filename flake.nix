@@ -20,6 +20,7 @@
       ...
     }:
     {
+      homeModules.options.default = import homeModules/options;
       nixosModules = {
         config.default = import nixosModules/config;
         options = rec {
@@ -29,9 +30,11 @@
             arcan
             cat9
             durden
+            home
             xarcan
           ];
           durden = import nixosModules/options/durden;
+          home = import nixosModules/options/home;
           xarcan = import nixosModules/options/xarcan;
         };
       };
