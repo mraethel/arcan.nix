@@ -12,6 +12,9 @@ self: final: prev: {
           openal
           sqlite
         ]);
+      postInstall = ''
+        ln -s /home ${placeholder "out"}/share/arcan/resources/home
+      '';
       patches = [ ];
     })).override
       {
