@@ -32,7 +32,7 @@ in
   config = lib.mkIf cfg.enable {
     environment = {
       loginShellInit = lib.mkIf cfg.loginShell.enable ''
-        if [[ -z $ARCAN_APPLBASEPATH && XDG_VTNR -eq ${builtins.toString cfg.loginShell.tty} ]]; then
+        if [[ -z ARCAN_APPLBASEPATH && XDG_VTNR -eq ${builtins.toString cfg.loginShell.tty} ]]; then
           exec arcan ${cfg.loginShell.appl}
         fi
       '';

@@ -13,27 +13,25 @@ in
     default = [ ];
     type = with lib.types; listOf str;
   };
-  config = {
+  config = lib.mkIf cfg.enable {
     assertions = [
       {
         assertion = (builtins.length config.users.arcanUsers) == 0 || options ? "home-manager";
         message = "Configure home-manager to use this option!";
       }
     ];
-    home-manager.users = lib.mkIf cfg.enable (
-      lib.mkMerge (
-        map (user: {
-          ${user}.imports = [
-            {
-              programs.arcan = {
-                enable = true;
-                appls = lib.optionals (cfg.durden.enable) [ "durden" ];
-              };
-            }
-          ]
-          ++ [ arcan.homeModules.options.default ];
-        }) config.users.arcanUsers
-      )
+    home-manager.users = lib.mkMerge (
+      map (user: {
+        ${config.users.users.${user}.name}.imports = [
+          {
+            programs.arcan = {
+              enable = true;
+              appls = lib.optionals (cfg.durden.enable) [ "durden" ];
+            };
+          }
+        ]
+        ++ [ arcan.homeModules.options.default ];
+      }) config.users.arcanUsers
     );
   };
 }
