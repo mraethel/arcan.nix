@@ -22,7 +22,7 @@ in
     ];
     home-manager.users = lib.mkMerge (
       map (user: {
-#       ${config.users.users.${user}.name}.imports = [ # TODO: fix infinite recursion
+        # ${config.users.users.${user}.name}.imports = [ # TODO: fix infinite recursion
         ${user}.imports = [
           {
             programs.arcan = {
