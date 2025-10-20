@@ -27,29 +27,27 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home = {
-      file = lib.mkMerge (
-        [
-          { "${state_base}/.keep".text = ""; }
-        ]
-        ++ (map
-          (
-            attrs: with attrs; {
-              "${store_base}/${appl}/${store_path}/.keep".text = "";
-            }
-          )
-          (
-            lib.cartesianProduct {
-              store_path = store_paths;
-              appl = cfg.appls;
-            }
-          )
+    home.file = lib.mkMerge (
+      [
+        { "${state_base}/.keep".text = ""; }
+      ]
+      ++ (map
+        (
+          attrs: with attrs; {
+            "${store_base}/${appl}/${store_path}/.keep".text = "";
+          }
         )
-      );
-      sessionVariables = {
-        ARCAN_APPLSTOREPATH = store_base;
-        ARCAN_STATEBASEPATH = state_base;
-      };
+        (
+          lib.cartesianProduct {
+            store_path = store_paths;
+            appl = cfg.appls;
+          }
+        )
+      )
+    );
+    systemd.user.sessionVariables = {
+      ARCAN_APPLSTOREPATH = store_base;
+      ARCAN_STATEBASEPATH = state_base;
     };
   };
 }

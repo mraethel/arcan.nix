@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.programs.arcan;
+  pkg = cfg.package.override { inherit (cfg) appls; };
 in
 {
   options = {
@@ -30,13 +31,29 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
+#   systemd.user.services.arcan = {
+#     enable = cfg.loginShell.enable;
+#     restartIfChanged = false;
+#     script = "${pkg}/bin/arcan durden";
+#     serviceConfig = {
+#       TTYPath = "/dev/tty1";
+#       TTYReset = "yes";
+#       TTYVHangup = "yes";
+#       TTYVTDisallocate = true;
+#       Type = "simple";
+#     };
+#     unitConfig.ConditionUser = "!root";
+#     wantedBy = [ "default.target" ];
+#   };
     environment = {
       loginShellInit = lib.mkIf cfg.loginShell.enable ''
         if [[ -z $ARCAN_APPLBASEPATH && $XDG_VTNR -eq ${builtins.toString cfg.loginShell.tty} ]]; then
+          export ARCAN_APPLSTOREPATH='.arcan/appl-out'
+          export ARCAN_STATEBASEPATH='.arcan/savestates'
           exec arcan ${cfg.loginShell.appl}
         fi
       '';
-      systemPackages = [ (cfg.package.override { inherit (cfg) appls; }) ];
+      systemPackages = [ pkg ];
     };
     hardware.graphics.enable = true;
   };
