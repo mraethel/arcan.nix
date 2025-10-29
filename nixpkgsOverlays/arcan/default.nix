@@ -14,7 +14,7 @@ self: final: prev: {
       postInstall = ''
         ln -s /home ${placeholder "out"}/share/arcan/resources/home
       '';
-      patches = [ ];
+      patches = [ ./arcan-cmakelists.diff ];
     })).override
       {
         sources = final.callPackage ./sources.nix { };
