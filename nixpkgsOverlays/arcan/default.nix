@@ -7,11 +7,10 @@ self: final: prev: {
         ++ (with final; [
           libunwind
           libuvc
-          lua51Packages.lua
           luajit
           openal
           sqlite
-        ]);
+        ]); # ++ (with final; lib.optional useBuiltinLua lua51Packages.lua);
       postInstall = ''
         ln -s /home ${placeholder "out"}/share/arcan/resources/home
       '';
@@ -19,8 +18,8 @@ self: final: prev: {
     })).override
       {
         sources = final.callPackage ./sources.nix { };
-          useBuiltinLua = false;
-          useStaticLibuvc = false;
+        # useBuiltinLua = false;
+        # useStaticLibuvc = false;
         # useStaticOpenAL = false;
         # useStaticSqlite = false;
       };
