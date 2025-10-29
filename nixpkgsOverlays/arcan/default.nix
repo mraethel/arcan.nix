@@ -2,15 +2,6 @@ self: final: prev: {
   inherit (self.packages.${final.system}) nvim-arcan;
   arcan =
     (prev.arcan.overrideAttrs (prevAttrs: {
-      # buildInputs =
-      #   prevAttrs.buildInputs
-      #   ++ (with final; [
-      #     libunwind
-      #     libuvc
-      #     luajit
-      #     openal
-      #     sqlite
-      #   ]);
       postInstall = ''
         ln -s /home ${placeholder "out"}/share/arcan/resources/home
       '';

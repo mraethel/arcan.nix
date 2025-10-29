@@ -1,6 +1,6 @@
 --- a/pkgs/by-name/ar/arcan/package.nix
 +++ b/pkgs/by-name/ar/arcan/package.nix
 @@ -30,0 +30,1 @@
-+  lua51Packages,
++  luajit,
 @@ -106,0 +107,1 @@
-+    (lib.optional (!useBuiltinLua) lua51Packages.lua)
++    (lib.optional (!useBuiltinLua) luajit)

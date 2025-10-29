@@ -1,13 +1,6 @@
---- ./src/CMakeLists.txt
-+++ ./src/CMakeLists.txt
-@@ -626,0 +627,3 @@
-+
-+	find_package(Lua51 REQUIRED)
-+
 --- ./src/frameserver/terminal/default/CMakeLists.txt
 +++ ./src/frameserver/terminal/default/CMakeLists.txt
-@@ -36,4 +35,0 @@
+@@ -36,1 +36,1 @@
 -if (NOT LUA_LIBRARY)
--	find_package(Lua51 REQUIRED)
--endif()
--
++if (CLIENT_LIBRARY_BUILD OR BUILD_PRESET STREQUAL "client")
+
