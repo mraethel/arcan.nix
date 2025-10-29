@@ -39,7 +39,10 @@
         };
       };
       overlays.arcan = import nixpkgsOverlays/arcan self;
-      patches.arcan = nixpkgsPatches/arcan/wrapper.diff;
+      patches.arcan = {
+        package = nixpkgsPatches/arcan/package.diff;
+        wrapper = nixpkgsPatches/arcan/wrapper.diff;
+      };
     }
     // flakeUtils.lib.eachDefaultSystem (
       system:
@@ -47,7 +50,10 @@
         nixpkgs-patched = (import nixpkgs { inherit system; }).applyPatches {
           name = "nixpkgs-patched";
           src = nixpkgs;
-          patches = with self.patches; [ arcan ];
+          patches = with self.patches.arcan; [
+            package
+            wrapper
+          ];
         };
         pkgs = import nixpkgs-patched {
           inherit system;

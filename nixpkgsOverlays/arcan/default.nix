@@ -2,27 +2,26 @@ self: final: prev: {
   inherit (self.packages.${final.system}) nvim-arcan;
   arcan =
     (prev.arcan.overrideAttrs (prevAttrs: {
-      buildInputs =
-        prevAttrs.buildInputs
-        ++ (with final; [
-          libunwind
-          libuvc
-          lua
-          luajit
-          openal
-          sqlite
-        ]);
+      # buildInputs =
+      #   prevAttrs.buildInputs
+      #   ++ (with final; [
+      #     libunwind
+      #     libuvc
+      #     luajit
+      #     openal
+      #     sqlite
+      #   ]);
       postInstall = ''
         ln -s /home ${placeholder "out"}/share/arcan/resources/home
       '';
-      patches = [ ];
+      patches = [ ./arcan-cmakelists.diff ];
     })).override
       {
         sources = final.callPackage ./sources.nix { };
-        useBuiltinLua = false;
-        useStaticLibuvc = false;
-        useStaticOpenAL = false;
-        useStaticSqlite = false;
+        # useBuiltinLua = false;
+        # useStaticLibuvc = false;
+        # useStaticOpenAL = false;
+        # useStaticSqlite = false;
       };
   cat9 = prev.cat9.overrideAttrs (_: {
     installPhase = ''
