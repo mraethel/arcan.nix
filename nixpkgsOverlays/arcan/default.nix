@@ -7,7 +7,7 @@ self: final: prev: {
         ++ (with final; [
           libunwind
           libuvc
-          lua
+          lua51Packages.lua
           luajit
           openal
           sqlite
@@ -19,10 +19,10 @@ self: final: prev: {
     })).override
       {
         sources = final.callPackage ./sources.nix { };
-        useBuiltinLua = false;
-        useStaticLibuvc = false;
-        useStaticOpenAL = false;
-        useStaticSqlite = false;
+          useBuiltinLua = false;
+          useStaticLibuvc = false;
+        # useStaticOpenAL = false;
+        # useStaticSqlite = false;
       };
   cat9 = prev.cat9.overrideAttrs (_: {
     installPhase = ''
