@@ -21,7 +21,8 @@
     rev = "731bdaefeb9cfcc52267bb8fc884248e4420e9ec";
     hash = "sha256-jrgZRekhEiztJ8vodWnCpeYmT54Ei/c27XrD5S98gjk=";
   };
-  libuvc.src = fetchFromGitHub { # nixpkgs libuvc is ancient
+  libuvc.src = fetchFromGitHub {
+    # nixpkgs libuvc is ancient
     owner = "libuvc";
     repo = "libuvc";
     rev = "047920bcdfb1dac42424c90de5cc77dfc9fba04d";

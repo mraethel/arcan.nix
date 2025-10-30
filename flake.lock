@@ -57,7 +57,8 @@
         "arcanNeovim": "arcanNeovim",
         "flakeUtils": "flakeUtils",
         "nixpkgs": "nixpkgs",
-        "systems": "systems"
+        "systems": "systems",
+        "xkb2kbdlua": "xkb2kbdlua"
       }
     },
     "systems": {
@@ -73,6 +74,22 @@
         "owner": "nix-systems",
         "repo": "x86_64-linux",
         "type": "github"
+      }
+    },
+    "xkb2kbdlua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1761597722,
+        "narHash": "sha256-6oB7T4/Ae3dv6Cm5lYj3qZ83FuFOurUhtOXD3+io0Qs=",
+        "ref": "refs/heads/master",
+        "rev": "9080ad16c8d4864d685352aa99c102f975678038",
+        "revCount": 24,
+        "type": "git",
+        "url": "https://codeberg.org/btrach/xkb2kbdlua"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/btrach/xkb2kbdlua"
       }
     }
   },

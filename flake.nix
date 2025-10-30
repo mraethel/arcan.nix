@@ -1,8 +1,8 @@
 {
   inputs = {
     arcanNeovim = {
-      url = "github:letoram/nvim-arcan";
       flake = false;
+      url = "github:letoram/nvim-arcan";
     };
     flakeUtils = {
       inputs.systems.follows = "systems";
@@ -10,10 +10,13 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/x86_64-linux";
+    xkb2kbdlua = {
+      flake = false;
+      url = "git+https://codeberg.org/btrach/xkb2kbdlua";
+    };
   };
   outputs =
-    {
-      arcanNeovim,
+    inputs@{
       flakeUtils,
       nixpkgs,
       self,
@@ -64,7 +67,8 @@
         formatter = pkgs.nixfmt-tree;
         legacyPackages = pkgs;
         packages = {
-          nvim-arcan = pkgs.callPackage packages/nvim-arcan { src = arcanNeovim; };
+          nvim-arcan = pkgs.callPackage packages/nvim-arcan { src = inputs.arcanNeovim; };
+          xkb2kbdlua = pkgs.callPackage packages/xkb2kbdlua { src = inputs.xkb2kbdlua; };
         };
       }
     );
