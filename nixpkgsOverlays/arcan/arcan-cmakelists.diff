@@ -1,6 +1,113 @@
+Index: ./src/CMakeLists.txt
+==================================================================
+--- ./src/CMakeLists.txt
++++ ./src/CMakeLists.txt
+@@ -341,0 +342,48 @@
++
++if (NOT ((CLIENT_LIBRARY_BUILD OR BUILD_PRESET STREQUAL "client") AND TERMINAL_IMPLEMENTATION))
++	set(LUA_LINKTYPE "dynamic")
++
++	if (NOT DISABLE_JIT)
++		set(LUA_TAG "luajit51")
++		if (EXISTS ${EXTERNAL_SRC_DIR}/git/luajit)
++			ExternalProject_Add(luajitbuild
++				SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/luajit
++				GIT_REPOSITORY "${EXTERNAL_SRC_DIR}/git/luajit"
++				CONFIGURE_COMMAND ""
++				GIT_TAG "871db2c84ecefd70a850e03a6c340214a81739f0"
++				UPDATE_COMMAND ""
++				INSTALL_COMMAND ""
++				BUILD_IN_SOURCE 1
++				BUILD_COMMAND "${EXTMAKE_CMD}"
++				BUILD_BYPRODUCTS "${CMAKE_CURRENT_BINARY_DIR}/luajit/src/libluajit.a"
++				DEFAULT_CC=${CMAKE_C_COMPILER}
++				${EXTERNAL_DEFS}
++			)
++			add_library(luajit STATIC IMPORTED)
++			add_dependencies(luajit luajitbuild)
++			set_target_properties(luajit PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/luajit/src/libluajit.a")
++			set(LUA_LIBRARY luajit)
++			set(LUA_LIBRARIES ${LUA_LIBRARY})
++			set(LUA_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}/luajit/src")
++			list(APPEND MAIN_DEPS luajit)
++			set(LUA_LINKTYPE "static")
++		else()
++			pkg_check_modules(LUA luajit REQUIRED)
++			find_library(LUA_LIBRARY NAMES ${LUA_LIBRARIES} PATHS ${LUA_LIBRARY_DIRS})
++			set(LUA_INCLUDE_DIR ${LUA_INCLUDE_DIRS})
++			set(LUA_LIBRARIES ${LUA_LINK_LIBRARIES})
++		endif()
++	endif()
++
++	if (NOT LUA_LIBRARY OR DISABLE_JIT)
++		set(LUA_TAG "lua51")
++		if (NOT BUILTIN_LUA)
++			find_package(Lua51 REQUIRED)
++		else()
++			add_subdirectory(${EXTERNAL_SRC_DIR}/lua ${CMAKE_CURRENT_BINARY_DIR}/lua)
++			set(LUA_INCLUDE_DIR ${EXTERNAL_SRC_DIR}/lua)
++			set(LUA_LIBRARIES lua51)
++			set(LUA_LINKTYPE "static")
++		endif()
++	endif()
++endif()
+@@ -393,47 +441,1 @@
+-	endif()
+-
+-	set(LUA_LINKTYPE "dynamic")
+-
+-	if (NOT DISABLE_JIT)
+-		set(LUA_TAG "luajit51")
+-		if (EXISTS ${EXTERNAL_SRC_DIR}/git/luajit)
+-			ExternalProject_Add(luajitbuild
+-				SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/luajit
+-				GIT_REPOSITORY "${EXTERNAL_SRC_DIR}/git/luajit"
+-				CONFIGURE_COMMAND ""
+-				GIT_TAG "871db2c84ecefd70a850e03a6c340214a81739f0"
+-				UPDATE_COMMAND ""
+-				INSTALL_COMMAND ""
+-				BUILD_IN_SOURCE 1
+-				BUILD_COMMAND "${EXTMAKE_CMD}"
+-				BUILD_BYPRODUCTS "${CMAKE_CURRENT_BINARY_DIR}/luajit/src/libluajit.a"
+-				DEFAULT_CC=${CMAKE_C_COMPILER}
+-				${EXTERNAL_DEFS}
+-			)
+-			add_library(luajit STATIC IMPORTED)
+-			add_dependencies(luajit luajitbuild)
+-			set_target_properties(luajit PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/luajit/src/libluajit.a")
+-			set(LUA_LIBRARY luajit)
+-			set(LUA_LIBRARIES ${LUA_LIBRARY})
+-			set(LUA_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}/luajit/src")
+-			list(APPEND MAIN_DEPS luajit)
+-			set(LUA_LINKTYPE "static")
+-		else()
+-			pkg_check_modules(LUA luajit REQUIRED)
+-			find_library(LUA_LIBRARY NAMES ${LUA_LIBRARIES} PATHS ${LUA_LIBRARY_DIRS})
+-			set(LUA_INCLUDE_DIR ${LUA_INCLUDE_DIRS})
+-			set(LUA_LIBRARIES ${LUA_LINK_LIBRARIES})
+-		endif()
+-	endif()
+-
+-	if (NOT LUA_LIBRARY OR DISABLE_JIT)
+-		set(LUA_TAG "lua51")
+-		if (NOT BUILTIN_LUA)
+-			find_package(Lua51 REQUIRED)
+-		else()
+-			add_subdirectory(${EXTERNAL_SRC_DIR}/lua ${CMAKE_CURRENT_BINARY_DIR}/lua)
+-			set(LUA_INCLUDE_DIR ${EXTERNAL_SRC_DIR}/lua)
+-			set(LUA_LIBRARIES lua51)
+-			set(LUA_LINKTYPE "static")
+-		endif()
+-	endif()
++	endif()	
+
+Index: ./src/frameserver/terminal/default/CMakeLists.txt
+==================================================================
 --- ./src/frameserver/terminal/default/CMakeLists.txt
 +++ ./src/frameserver/terminal/default/CMakeLists.txt
-@@ -36,1 +36,1 @@
+@@ -36,4 +35,0 @@
 -if (NOT LUA_LIBRARY)
-+if (CLIENT_LIBRARY_BUILD OR BUILD_PRESET STREQUAL "client")
+-	find_package(Lua51 REQUIRED)
+-endif()
+-
 
