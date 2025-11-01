@@ -2,5 +2,9 @@
 +++ b/pkgs/by-name/ar/arcan/package.nix
 @@ -30,0 +30,1 @@
 +  luajit,
-@@ -106,0 +107,1 @@
-+    (lib.optional (!useBuiltinLua) luajit)
+@@ -50,0 +51,1 @@
++  debug ? false,
+@@ -119,0 +121,1 @@
++  ++ lib.optional (!useBuiltinLua) luajit
+@@ -126,0 +129,1 @@
++    (lib.cmakeFeature "CMAKE_BUILD_TYPE" (if debug then "Debug" else "Release"))
