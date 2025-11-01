@@ -1,6 +1,0 @@
---- ./src/frameserver/terminal/default/CMakeLists.txt
-+++ ./src/frameserver/terminal/default/CMakeLists.txt
-@@ -36,1 +36,1 @@
--if (NOT LUA_LIBRARY)
-+if (CLIENT_LIBRARY_BUILD OR BUILD_PRESET STREQUAL "client")
-

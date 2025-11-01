@@ -19,10 +19,13 @@ in
         assertion = (builtins.length config.users.arcanUsers) == 0 || options ? "home-manager";
         message = "Configure home-manager to use this option!";
       }
+      {
+        assertion = builtins.all (user: config.users.users ? user) config.users.arcanUsers;
+        message = "Arcan users must exist!";
+      }
     ];
     home-manager.users = lib.mkMerge (
       map (user: {
-        # ${config.users.users.${user}.name}.imports = [ # TODO: fix infinite recursion
         ${user}.imports = [
           {
             programs.arcan = {
