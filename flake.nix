@@ -8,6 +8,7 @@
       inputs.systems.follows = "systems";
       url = "github:numtide/flake-utils";
     };
+    homeManager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/x86_64-linux";
     xkb2kbdlua = {
@@ -18,14 +19,33 @@
   outputs =
     inputs@{
       flakeUtils,
+      homeManager,
       nixpkgs,
       self,
       ...
     }:
-    {
+    rec {
       homeModules.options.default = import homeModules/options;
+      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+        specialArgs = inputs // {
+          arcan = self;
+          localLib = nixosLibrary.default;
+        };
+        modules = (
+          with nixosModules;
+          [
+            config.default
+            config.image
+            options.default
+          ]
+        ) ++ [ homeManager.nixosModules.home-manager ];
+      };
+      nixosLibrary.default = import ./nixosLibrary;
       nixosModules = {
-        config.default = import nixosModules/config;
+        config = {
+          default = import nixosModules/config;
+          image = import nixosModules/config/image.nix;
+        };
         options = rec {
           arcan = import nixosModules/options/arcan;
           cat9 = import nixosModules/options/cat9;

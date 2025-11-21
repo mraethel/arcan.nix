@@ -76,7 +76,7 @@ in
     enable = lib.mkEnableOption "Durden";
     package = lib.mkPackageOption pkgs "durden" { };
     keymaps = lib.mkOption {
-      default.default.layout = "en";
+      default.default.layout = "us";
       type =
         with lib.types;
         attrsOf (submodule {

@@ -36,13 +36,47 @@
         "type": "github"
       }
     },
+    "homeManager": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1763416652,
+        "narHash": "sha256-8EBEEvtzQ11LCxpQHMNEBQAGtQiCu/pqP9zSovDSbNM=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "ea164b7c9ccdc2321379c2ff78fd4317b4c41312",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1758427187,
-        "narHash": "sha256-pHpxZ/IyCwoTQPtFIAG2QaxuSm8jWzrzBGjwQZIttJc=",
+        "lastModified": 1762111121,
+        "narHash": "sha256-4vhDuZ7OZaZmKKrnDpxLZZpGIJvAeMtK6FKLJYUtAdw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b3d51a0365f6695e7dd5cdf3e180604530ed33b4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1763421233,
+        "narHash": "sha256-Stk9ZYRkGrnnpyJ4eqt9eQtdFWRRIvMxpNRf4sIegnw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "554be6495561ff07b6c724047bdd7e0716aa7b46",
+        "rev": "89c2b2330e733d6cdb5eae7b899326930c2c0648",
         "type": "github"
       },
       "original": {
@@ -56,7 +90,8 @@
       "inputs": {
         "arcanNeovim": "arcanNeovim",
         "flakeUtils": "flakeUtils",
-        "nixpkgs": "nixpkgs",
+        "homeManager": "homeManager",
+        "nixpkgs": "nixpkgs_2",
         "systems": "systems",
         "xkb2kbdlua": "xkb2kbdlua"
       }
@@ -79,11 +114,11 @@
     "xkb2kbdlua": {
       "flake": false,
       "locked": {
-        "lastModified": 1761597722,
-        "narHash": "sha256-6oB7T4/Ae3dv6Cm5lYj3qZ83FuFOurUhtOXD3+io0Qs=",
+        "lastModified": 1762984630,
+        "narHash": "sha256-AyeINtqVrYrWsoOhhRT5aewsQukTKeF8hTy699Y9neI=",
         "ref": "refs/heads/master",
-        "rev": "9080ad16c8d4864d685352aa99c102f975678038",
-        "revCount": 24,
+        "rev": "dfd24e4570e0b0642b56d38e775ede0de271f812",
+        "revCount": 29,
         "type": "git",
         "url": "https://codeberg.org/btrach/xkb2kbdlua"
       },

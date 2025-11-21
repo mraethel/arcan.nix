@@ -1,7 +1,7 @@
 {
   arcan,
   meson,
-  msgpack,
+  msgpack-c,
   ninja,
   pkg-config,
   src,
@@ -13,6 +13,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   inherit src;
 
+  patches = [ ./nvim-arcan-msgpack.diff ];
+
   nativeBuildInputs = [
     meson
     ninja
@@ -21,6 +23,6 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = [
     arcan
-    msgpack
+    msgpack-c
   ];
 })

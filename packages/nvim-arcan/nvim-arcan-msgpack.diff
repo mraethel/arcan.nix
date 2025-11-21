@@ -1,0 +1,5 @@
+--- a/meson.build
++++ b/meson.build
+@@ -5 +5 @@
+-msgpack = dependency('msgpack')
++msgpack = dependency('msgpack-c')

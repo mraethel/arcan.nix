@@ -5,7 +5,9 @@ self: final: prev: {
       postInstall = ''
         ln -s /home ${placeholder "out"}/share/arcan/resources/home
       '';
-      patches = [ ./arcan-cmakelists.diff ];
+      patches = prevAttrs.patches ++ [
+        ./arcan-cmakelists.diff
+      ];
     })).override
       {
         sources = final.callPackage ./sources.nix { };
@@ -34,7 +36,7 @@ self: final: prev: {
     };
     version = "2025-08-17";
   });
-  durden = prev.durden.overrideAttrs (_: {
+  durden = prev.durden.overrideAttrs (prevAttrs: {
     patches = [
       ./durden-autorun.diff
       ./durden-firstrun.diff
