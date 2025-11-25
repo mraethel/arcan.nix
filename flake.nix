@@ -10,7 +10,7 @@
     };
     homeManager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    systems.url = "github:nix-systems/x86_64-linux";
+    systems.url = "github:nix-systems/default-linux";
     xkb2kbdlua = {
       flake = false;
       url = "git+https://codeberg.org/btrach/xkb2kbdlua";
