@@ -5,7 +5,7 @@ self: final: prev: {
       postInstall = ''
         ln -s /home ${placeholder "out"}/share/arcan/resources/home
       '';
-      patches = prevAttrs.patches ++ [
+      patches = [
         ./arcan-cmakelists.diff
       ];
     })).override
@@ -31,8 +31,8 @@ self: final: prev: {
     '';
     src = final.fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/cat9";
-      rev = "e7fc5ef3a6d81a8a";
-      hash = "sha256-84MM4ZBkJjUJ4dDyiCkAdNz9OOPVpCNEvpaBWGIL0+U=";
+      rev = "4570bc9ead6cff2f";
+      hash = "sha256-Yg/xdLOIk7dTeL/BrUgu7OfPczD0XWIxsiiUwafx3E0=";
     };
     version = "2025-08-17";
   });
