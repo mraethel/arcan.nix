@@ -10,7 +10,7 @@ self: final: prev: {
       ];
     })).override
       {
-        sources = final.callPackage ./sources.nix { };
+        # sources = final.callPackage ./sources.nix { };
         # useBuiltinLua = false;
         # useStaticLibuvc = false;
         # useStaticOpenAL = false;
@@ -29,12 +29,12 @@ self: final: prev: {
 
       runHook postInstall
     '';
-    src = final.fetchfossil {
-      url = "https://chiselapp.com/user/letoram/repository/cat9";
-      rev = "4570bc9ead6cff2f";
-      hash = "sha256-Yg/xdLOIk7dTeL/BrUgu7OfPczD0XWIxsiiUwafx3E0=";
-    };
-    version = "2025-08-17";
+    # src = final.fetchfossil {
+    #   url = "https://chiselapp.com/user/letoram/repository/cat9";
+    #   rev = "4570bc9ead6cff2f";
+    #   hash = "sha256-Yg/xdLOIk7dTeL/BrUgu7OfPczD0XWIxsiiUwafx3E0=";
+    # };
+    # version = "2025-08-17";
   });
   durden = prev.durden.overrideAttrs (prevAttrs: {
     patches = [
@@ -42,20 +42,20 @@ self: final: prev: {
       ./durden-firstrun.diff
       ./durden-gconf.diff
     ];
-    src = final.fetchfossil {
-      url = "https://chiselapp.com/user/letoram/repository/durden";
-      rev = "9d499e84dc661e0f";
-      hash = "sha256-PH799/6EVjSsCA7q2yny2USUhWIvYRxFrdYHJzCROfQ=";
-    };
-    version = "2025-08-10";
+    # src = final.fetchfossil {
+    #   url = "https://chiselapp.com/user/letoram/repository/durden";
+    #   rev = "9d499e84dc661e0f";
+    #   hash = "sha256-PH799/6EVjSsCA7q2yny2USUhWIvYRxFrdYHJzCROfQ=";
+    # };
+    # version = "2025-08-10";
   });
   xarcan = prev.xarcan.overrideAttrs (prevAttrs: {
-    src = final.fetchFromGitHub {
-      owner = "letoram";
-      repo = "xarcan";
-      rev = "3e1f52252582d9aff5fb9f09ef6f1182813467b2";
-      hash = "sha256-lZRPCzL3MwUgsZGg9kmBmwsHp16H5AQDbHeVTAmKfm4=";
-    };
-    version = "2025-02-25";
+    # src = final.fetchFromGitHub {
+    #   owner = "letoram";
+    #   repo = "xarcan";
+    #   rev = "3e1f52252582d9aff5fb9f09ef6f1182813467b2";
+    #   hash = "sha256-lZRPCzL3MwUgsZGg9kmBmwsHp16H5AQDbHeVTAmKfm4=";
+    # };
+    # version = "2025-02-25";
   });
 }

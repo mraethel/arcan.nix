@@ -1,6 +1,6 @@
 --- ./src/CMakeLists.txt
 +++ ./src/CMakeLists.txt
-@@ -342,0 +342,48 @@
+@@ -348,0 +348,48 @@
 +
 +if (NOT ((CLIENT_LIBRARY_BUILD OR BUILD_PRESET STREQUAL "client") AND TERMINAL_IMPLEMENTATION))
 +	set(LUA_LINKTYPE "dynamic")
@@ -49,8 +49,7 @@
 +		endif()
 +	endif()
 +endif()
-@@ -393,47 +441,1 @@
--	endif()
+@@ -401,46 +449,0 @@
 -
 -	set(LUA_LINKTYPE "dynamic")
 -
@@ -97,11 +96,10 @@
 -			set(LUA_LINKTYPE "static")
 -		endif()
 -	endif()
-+	endif()	
 
 --- ./src/frameserver/terminal/default/CMakeLists.txt
 +++ ./src/frameserver/terminal/default/CMakeLists.txt
-@@ -35,4 +35,0 @@
+@@ -36,4 +36,0 @@
 -if (NOT LUA_LIBRARY)
 -	find_package(Lua51 REQUIRED)
 -endif()
@@ -109,7 +107,7 @@
 
 --- ./src/a12/net/CMakeLists.txt
 +++ ./src/a12/net/CMakeLists.txt
-@@ -43,4 +43,0 @@
+@@ -48,4 +48,0 @@
 -if (NOT LUA_FOUND)
 -	find_package(Lua51 REQUIRED)
 -endif()
