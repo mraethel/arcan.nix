@@ -10,7 +10,7 @@
 +  nvim-arcan,
 @@ -4,0 +11 @@
 +  wpa_supplicant,
-@@ -18,0 +26,7 @@
+@@ -19,0 +27,7 @@
 +        --prefix PATH ":" "${inotify-tools}/bin" \
 +        --prefix PATH ":" "${doas}/bin" \
 +        --prefix PATH ":" "${fossil}/bin" \
@@ -18,5 +18,5 @@
 +        --prefix PATH ":" "${lldb}/bin" \
 +        --prefix PATH ":" "${wpa_supplicant}/bin" \
 +        --prefix PATH ":" "${nvim-arcan}/bin" \
-@@ -19,0 +34,1 @@
+@@ -20,0 +35,1 @@
 +        --set LASH_BASE "${placeholder "out"}/share/arcan/lash" \
