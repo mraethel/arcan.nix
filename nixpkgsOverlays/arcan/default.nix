@@ -6,11 +6,11 @@ self: final: prev: {
         ln -s /home ${placeholder "out"}/share/arcan/resources/home
       '';
       patches = [
-        ./arcan-cmakelists.diff
+        # ./arcan-cmakelists.diff
       ];
     })).override
       {
-        # sources = final.callPackage ./sources.nix { };
+        sources = final.callPackage ./sources.nix { };
         # useBuiltinLua = false;
         # useStaticLibuvc = false;
         # useStaticOpenAL = false;
