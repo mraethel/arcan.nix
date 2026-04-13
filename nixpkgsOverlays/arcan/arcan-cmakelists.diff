@@ -1,6 +1,6 @@
 --- ./src/CMakeLists.txt
 +++ ./src/CMakeLists.txt
-@@ -348,0 +348,48 @@
+@@ -335,0 +335,48 @@
 +
 +if (NOT ((CLIENT_LIBRARY_BUILD OR BUILD_PRESET STREQUAL "client") AND TERMINAL_IMPLEMENTATION))
 +	set(LUA_LINKTYPE "dynamic")
@@ -49,7 +49,7 @@
 +		endif()
 +	endif()
 +endif()
-@@ -401,46 +449,0 @@
+@@ -395,46 +443,0 @@
 -
 -	set(LUA_LINKTYPE "dynamic")
 -

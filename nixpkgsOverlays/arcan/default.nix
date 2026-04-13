@@ -6,8 +6,9 @@ self: final: prev: {
         ln -s /home ${placeholder "out"}/share/arcan/resources/home
       '';
       patches = [
-        # ./arcan-cmakelists.diff
+        ./arcan-cmakelists.diff
       ];
+      separateDebugInfo = true;
     })).override
       {
         sources = final.callPackage ./sources.nix { };
