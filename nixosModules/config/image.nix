@@ -29,8 +29,12 @@
         version = pkgs.arcan.version;
       };
     };
-    "x86_64-linux" = default // { nixpkgs.hostPlatform = "x86_64-linux"; };
-    "aarch64-linux" = default // { nixpkgs.hostPlatform = "aarch64-linux"; };
+    "x86_64-linux" = default // {
+      nixpkgs.hostPlatform = "x86_64-linux";
+    };
+    "aarch64-linux" = default // {
+      nixpkgs.hostPlatform = "aarch64-linux";
+    };
   };
   nix.settings.experimental-features = [
     "flakes"

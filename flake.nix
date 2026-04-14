@@ -10,6 +10,7 @@
     };
     homeManager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    qtarcan.url = "git+https://codeberg.org/vimpostor/qtarcan";
     systems.url = "github:nix-systems/default-linux";
     xkb2kbdlua = {
       flake = false;
@@ -21,6 +22,7 @@
       flakeUtils,
       homeManager,
       nixpkgs,
+      qtarcan,
       self,
       ...
     }:
@@ -31,14 +33,13 @@
           arcan = self;
           localLib = nixosLibrary.default;
         };
-        modules = (
-          with nixosModules;
-          [
+        modules =
+          (with nixosModules; [
             config.default
             config.image
             options.default
-          ]
-        ) ++ [ homeManager.nixosModules.home-manager ];
+          ])
+          ++ [ homeManager.nixosModules.home-manager ];
       };
       nixosLibrary.default = import ./nixosLibrary;
       nixosModules = {
@@ -61,7 +62,10 @@
           xarcan = import nixosModules/options/xarcan;
         };
       };
-      overlays.arcan = import nixpkgsOverlays/arcan self;
+      overlays = {
+        arcan = import nixpkgsOverlays/arcan self;
+        qutebrowser = import nixpkgsOverlays/qutebrowser;
+      };
       patches.arcan = {
         package = nixpkgsPatches/arcan/package.diff;
         wrapper = nixpkgsPatches/arcan/wrapper.diff;
@@ -82,11 +86,13 @@
           inherit system;
           overlays = with self.overlays; [ arcan ];
         };
+        qtpkgs = qtarcan.legacyPackages.${system}.extend self.overlays.qutebrowser;
       in
       {
         formatter = pkgs.nixfmt-tree;
         legacyPackages = pkgs;
         packages = {
+          inherit (qtpkgs) qutebrowser;
           nvim-arcan = pkgs.callPackage packages/nvim-arcan { src = inputs.arcanNeovim; };
           xkb2kbdlua = pkgs.callPackage packages/xkb2kbdlua { src = inputs.xkb2kbdlua; };
         };

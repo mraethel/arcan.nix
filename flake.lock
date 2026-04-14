@@ -86,12 +86,47 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1768127708,
+        "narHash": "sha256-1Sm77VfZh3mU0F5OqKABNLWxOuDeHIlcFjsXeeiPazs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ffbc9f8cbaacfb331b6017d5a5abb21a492c9a38",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "qtarcan": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1775950805,
+        "narHash": "sha256-f122iLFptk0eA0XwhrCTuDiH66S8OhmCyGRFZCEP1qA=",
+        "ref": "refs/heads/master",
+        "rev": "f2818892cf08b70dee149d4166329e4a6747fd72",
+        "revCount": 61,
+        "type": "git",
+        "url": "https://codeberg.org/vimpostor/qtarcan"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/vimpostor/qtarcan"
+      }
+    },
     "root": {
       "inputs": {
         "arcanNeovim": "arcanNeovim",
         "flakeUtils": "flakeUtils",
         "homeManager": "homeManager",
         "nixpkgs": "nixpkgs_2",
+        "qtarcan": "qtarcan",
         "systems": "systems",
         "xkb2kbdlua": "xkb2kbdlua"
       }
