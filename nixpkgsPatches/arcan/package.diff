@@ -1,10 +1,10 @@
 --- a/pkgs/by-name/ar/arcan/package.nix
 +++ b/pkgs/by-name/ar/arcan/package.nix
-@@ -51,0 +51,1 @@
+@@ -50,0 +50,1 @@
 +  debug ? false,
-@@ -60,0 +61,1 @@
+@@ -59,0 +60,1 @@
 +  storePath ? "$out"
-@@ -120,0 +122,1 @@
+@@ -119,0 +121,1 @@
 +    (lib.cmakeFeature "CMAKE_BUILD_TYPE" (if debug then "Debug" else "Release"))
 @@ -168,2 +171,2 @@
 -      --replace-fail "/usr/bin" "$out/bin" \
