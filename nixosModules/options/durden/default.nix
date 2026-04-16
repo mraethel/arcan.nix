@@ -40,8 +40,8 @@ let
       pkgs.runCommand "xkb2kbdlua-${kmp.model}-${kmp.layout}"
         { buildInputs = [ arcan.packages.${pkgs.system}.xkb2kbdlua ]; }
         ''
-          mkdir -p $out/share/arcan/appl/durden/devmaps/keyboard
-          cd $out/share/arcan/appl/durden/devmaps/keyboard
+          mkdir -p $out/share/arcan/resources/devmaps/keyboard
+          cd $out/share/arcan/resources/devmaps/keyboard
 
           xkb2kbdlua ${optionalArgs kmp} -n ${name}
         ''

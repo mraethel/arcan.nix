@@ -6,7 +6,14 @@
 }:
 let
   cfg = config.programs.arcan;
-  pkg = cfg.package.override { inherit (cfg) appls; };
+  pkg = cfg.package.overrideAttrs (final: prev: {
+    passthru = prev.passthru // {
+      wrapper = prev.passthru.wrapper.override {
+        inherit (cfg) appls;
+      };
+    };
+  });
+  wrapper = (pkg.override { storePath = pkg.wrapper; }).wrapper;
   toDB =
     targets:
     lib.strings.concatLines (
@@ -22,7 +29,7 @@ in
   options = {
     programs.arcan = {
       enable = lib.mkEnableOption "Arcan";
-      package = lib.mkPackageOption pkgs "arcan-wrapped" { };
+      package = lib.mkPackageOption pkgs "arcan" { };
       appls = lib.mkOption {
         default = [ ];
         type = with lib.types; listOf package;
@@ -91,7 +98,7 @@ in
           exec arcan ${cfg.loginShell.appl}
         fi
       '';
-      systemPackages = [ pkg ];
+      systemPackages = [ wrapper ];
     };
     hardware.graphics.enable = true;
   };

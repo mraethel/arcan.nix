@@ -8,6 +8,13 @@ self: final: prev: {
       patches = [
         ./arcan-cmakelists.diff
       ];
+      #postPatch = ''
+      #  substituteInPlace ./src/platform/posix/paths.c \
+      #    --replace-fail "/usr/bin" "${prev.arcan.wrapper}/bin" \
+      #    --replace-fail "/usr/share" "${prev.arcan.wrapper}/share"
+      #  substituteInPlace ./src/CMakeLists.txt \
+      #    --replace-fail "SETUID" "# SETUID"
+      #'';
       separateDebugInfo = true;
     })).override
       {

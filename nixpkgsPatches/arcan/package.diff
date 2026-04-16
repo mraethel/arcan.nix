@@ -6,7 +6,7 @@
 +  storePath ? "$out"
 @@ -119,0 +121,1 @@
 +    (lib.cmakeFeature "CMAKE_BUILD_TYPE" (if debug then "Debug" else "Release"))
-@@ -168,2 +171,2 @@
+@@ -167,2 +170,2 @@
 -      --replace-fail "/usr/bin" "$out/bin" \
 -      --replace-fail "/usr/share" "$out/share"
 +      --replace-fail "/usr/bin" "${storePath}/bin" \
