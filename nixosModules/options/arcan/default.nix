@@ -7,6 +7,16 @@
 let
   cfg = config.programs.arcan;
   pkg = cfg.package.override { inherit (cfg) appls; };
+  toDB =
+    targets:
+    lib.strings.concatLines (
+      lib.attrsets.mapAttrsToList (
+        name: target:
+        "arcan_db add_target ${name} ${
+          lib.strings.optionalString (target.tag != "") "-"
+        }${target.tag} ${target.bfrm} ${target.exec} ${lib.strings.concatStringsSep " " target.argv}"
+      ) targets
+    );
 in
 {
   options = {
@@ -18,14 +28,54 @@ in
         type = with lib.types; listOf package;
       };
       loginShell = {
-        enable = lib.mkEnableOption "loginShell";
-        tty = lib.mkOption {
-          default = 1;
-          type = lib.types.ints.between 1 10;
-        };
         appl = lib.mkOption {
           default = "durden";
           type = lib.types.str;
+        };
+        enable = lib.mkEnableOption "loginShell";
+        targets = lib.mkOption {
+          type =
+            with lib.types;
+            attrsOf (
+              submodule (
+                { name, ... }:
+                {
+                  config.name = lib.mkDefault name;
+                  options = {
+                    argv = lib.mkOption {
+                      default = [ ];
+                      type = with lib.types; listOf singleLineStr;
+                    };
+                    bfrm = lib.mkOption {
+                      type =
+                        with lib.types;
+                        enum [
+                          "BIN"
+                          "LWA"
+                          "GAME"
+                          "SHELL"
+                          "EXTERNAL"
+                        ];
+                    };
+                    exec = lib.mkOption {
+                      type = lib.types.pathInStore;
+                    };
+                    name = lib.mkOption {
+                      type = lib.types.singleLineStr;
+                    };
+                    tag = lib.mkOption {
+                      default = "";
+                      type = lib.types.singleLineStr;
+                    };
+                  };
+                }
+              )
+            );
+
+        };
+        tty = lib.mkOption {
+          default = 1;
+          type = lib.types.ints.between 1 10;
         };
       };
     };
@@ -36,6 +86,8 @@ in
         if [[ -z $ARCAN_APPLBASEPATH && $XDG_VTNR -eq ${toString cfg.loginShell.tty} ]]; then
           export ARCAN_APPLSTOREPATH='.arcan/appl-out'
           export ARCAN_STATEBASEPATH='.arcan/savestates'
+
+          ${toDB cfg.loginShell.targets}
           exec arcan ${cfg.loginShell.appl}
         fi
       '';
