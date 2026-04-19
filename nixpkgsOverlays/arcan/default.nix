@@ -2,19 +2,11 @@ self: final: prev: {
   inherit (self.packages.${final.system}) nvim-arcan;
   arcan =
     (prev.arcan.overrideAttrs (prevAttrs: {
-      postInstall = ''
-        ln -s /home ${placeholder "out"}/share/arcan/resources/home
-      '';
-      patches = [
-        ./arcan-cmakelists.diff
-      ];
-      #postPatch = ''
-      #  substituteInPlace ./src/platform/posix/paths.c \
-      #    --replace-fail "/usr/bin" "${prev.arcan.wrapper}/bin" \
-      #    --replace-fail "/usr/share" "${prev.arcan.wrapper}/share"
-      #  substituteInPlace ./src/CMakeLists.txt \
-      #    --replace-fail "SETUID" "# SETUID"
-      #'';
+      passthru = prevAttrs.passthru // {
+        wrapper = final.callPackage ./wrapper.nix { };
+      };
+      patches = [ ./arcan-cmakelists.diff ];
+      postInstall = "ln -s /home $out/share/arcan/resources/home";
       separateDebugInfo = true;
     })).override
       {
@@ -28,12 +20,12 @@ self: final: prev: {
     installPhase = ''
       runHook preInstall
 
-      mkdir -p ${placeholder "out"}/share/arcan/appl/cat9
-      cp -a ./* ${placeholder "out"}/share/arcan/appl/cat9
+      mkdir -p $out/share/arcan/appl/cat9
+      cp -a ./* $out/share/arcan/appl/cat9
 
-      mkdir -p ${placeholder "out"}/share/arcan/lash
-      ln -s ../appl/cat9/cat9.lua ${placeholder "out"}/share/arcan/lash/default.lua
-      ln -s ../appl/cat9/cat9 ${placeholder "out"}/share/arcan/lash/cat9
+      mkdir -p $out/share/arcan/lash
+      ln -s ../appl/cat9/cat9.lua $out/share/arcan/lash/default.lua
+      ln -s ../appl/cat9/cat9 $out/share/arcan/lash/cat9
 
       runHook postInstall
     '';

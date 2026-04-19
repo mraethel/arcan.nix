@@ -11,8 +11,8 @@
 
     src = fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/arcan";
-      rev = "0e0ee250af4eaa56";
-      hash = "sha256-aAI2k38tBrLwGTK3mK1vSHmNWqNCgFAXm5LWSEMNlKo=";
+      rev = "35f6335178436d51";
+      hash = "sha256-uGYovN3KEMkvHVhVdx0QrLKKJkpEZJ2bGRfShu+a48I=";
     };
   };
   letoram-openal.src = fetchFromGitHub {

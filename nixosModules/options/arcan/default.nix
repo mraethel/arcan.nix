@@ -6,14 +6,6 @@
 }:
 let
   cfg = config.programs.arcan;
-  pkg = cfg.package.overrideAttrs (final: prev: {
-    passthru = prev.passthru // {
-      wrapper = prev.passthru.wrapper.override {
-        inherit (cfg) appls;
-      };
-    };
-  });
-  wrapper = (pkg.override { storePath = pkg.wrapper; }).wrapper;
   toDB =
     targets:
     lib.strings.concatLines (
@@ -24,6 +16,7 @@ let
         }${target.tag} ${target.bfrm} ${target.exec} ${lib.strings.concatStringsSep " " target.argv}"
       ) targets
     );
+  wrapper = cfg.package.wrapper.override { inherit (cfg) appls; };
 in
 {
   options = {

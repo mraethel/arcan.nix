@@ -66,10 +66,7 @@
         arcan = import nixpkgsOverlays/arcan self;
         qutebrowser = import nixpkgsOverlays/qutebrowser;
       };
-      patches.arcan = {
-        package = nixpkgsPatches/arcan/package.diff;
-        wrapper = nixpkgsPatches/arcan/wrapper.diff;
-      };
+      patches.arcan.package = nixpkgsPatches/arcan/package.diff;
     }
     // flakeUtils.lib.eachDefaultSystem (
       system:
@@ -77,10 +74,7 @@
         nixpkgs-patched = (import nixpkgs { inherit system; }).applyPatches {
           name = "nixpkgs-patched";
           src = nixpkgs;
-          patches = with self.patches.arcan; [
-            package
-            wrapper
-          ];
+          patches = with self.patches.arcan; [ package ];
         };
         pkgs = import nixpkgs-patched {
           inherit system;
