@@ -38,7 +38,7 @@ let
     lib.attrsets.mapAttrsToList (
       name: kmp:
       pkgs.runCommand "xkb2kbdlua-${kmp.model}-${kmp.layout}"
-        { buildInputs = [ arcan.packages.${pkgs.system}.xkb2kbdlua ]; }
+        { nativeBuildInputs = [ arcan.packages.${pkgs.system}.xkb2kbdlua ]; }
         ''
           mkdir -p $out/share/arcan/appl/durden/devmaps/keyboard
           cd $out/share/arcan/appl/durden/devmaps/keyboard
@@ -81,6 +81,10 @@ in
         with lib.types;
         attrsOf (submodule {
           options = {
+            clocale = lib.mkOption {
+              default = "";
+              type = str;
+            };
             layout = lib.mkOption { type = str; };
             model = lib.mkOption {
               default = "pc105";
