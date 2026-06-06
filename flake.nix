@@ -10,7 +10,10 @@
     };
     homeManager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    qtarcan.url = "git+https://codeberg.org/vimpostor/qtarcan";
+    qtarcan = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "git+https://codeberg.org/vimpostor/qtarcan";
+    };
     systems.url = "github:nix-systems/default-linux";
     xkb2kbdlua = {
       flake = false;
@@ -30,6 +33,7 @@
       homeModules.options.default = import homeModules/options;
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = inputs // {
+          inherit qtarcan;
           arcan = self;
           localLib = nixosLibrary.default;
         };
