@@ -7,12 +7,12 @@
   inherit luajit;
   letoram-arcan = {
     pname = "arcan";
-    version = "0.7.0.1-unstable-2025-10-16";
+    version = "0.7.1-unstable-2026-06-06";
 
     src = fetchfossil {
       url = "https://chiselapp.com/user/letoram/repository/arcan";
-      rev = "4e8b1df095faf7ce";
-      hash = "sha256-139sxG5j6tZwc5QJJ4ZEbuF5jVselhZUEmsVKA/TF+M=";
+      rev = "2a5c5240fe2d1c27";
+      hash = "sha256-Y57xSwLw+L0A2zDuB2liuT1f9QUgzDCicMkjcrZe7kE=";
     };
   };
   letoram-openal.src = fetchFromGitHub {
