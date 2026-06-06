@@ -88,11 +88,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1768127708,
-        "narHash": "sha256-1Sm77VfZh3mU0F5OqKABNLWxOuDeHIlcFjsXeeiPazs=",
+        "lastModified": 1779560665,
+        "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ffbc9f8cbaacfb331b6017d5a5abb21a492c9a38",
+        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
         "type": "github"
       },
       "original": {
@@ -107,11 +107,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1775950805,
-        "narHash": "sha256-f122iLFptk0eA0XwhrCTuDiH66S8OhmCyGRFZCEP1qA=",
+        "lastModified": 1780089637,
+        "narHash": "sha256-MMPhoMpfnlAtvpss5JnPW6gvGgyjP373O4RRd6S1En0=",
         "ref": "refs/heads/master",
-        "rev": "f2818892cf08b70dee149d4166329e4a6747fd72",
-        "revCount": 61,
+        "rev": "182eb662364b34324b9e08e45a056eb9ec93e392",
+        "revCount": 65,
         "type": "git",
         "url": "https://codeberg.org/vimpostor/qtarcan"
       },
