@@ -1,6 +1,6 @@
 --- ./src/CMakeLists.txt
 +++ ./src/CMakeLists.txt
-@@ -335,0 +335,48 @@
+@@ -341,0 +341,48 @@
 +
 +if (NOT ((CLIENT_LIBRARY_BUILD OR BUILD_PRESET STREQUAL "client") AND TERMINAL_IMPLEMENTATION))
 +	set(LUA_LINKTYPE "dynamic")
@@ -49,7 +49,7 @@
 +		endif()
 +	endif()
 +endif()
-@@ -395,46 +443,0 @@
+@@ -401,46 +449,0 @@
 -
 -	set(LUA_LINKTYPE "dynamic")
 -
@@ -107,7 +107,7 @@
 
 --- ./src/a12/net/CMakeLists.txt
 +++ ./src/a12/net/CMakeLists.txt
-@@ -48,4 +48,0 @@
+@@ -52,4 +52,0 @@
 -if (NOT LUA_FOUND)
 -	find_package(Lua51 REQUIRED)
 -endif()

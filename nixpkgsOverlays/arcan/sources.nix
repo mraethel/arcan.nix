@@ -1,5 +1,6 @@
 {
   fetchfossil,
+  fetchFromCodeberg,
   fetchFromGitHub,
   luajit,
 }:
@@ -7,13 +8,19 @@
   inherit luajit;
   letoram-arcan = {
     pname = "arcan";
-    version = "0.7.1-unstable-2026-06-06";
+    version = "0.7.2-unstable-2026-10-18";
 
-    src = fetchfossil {
-      url = "https://chiselapp.com/user/letoram/repository/arcan";
-      rev = "2a5c5240fe2d1c27";
-      hash = "sha256-Y57xSwLw+L0A2zDuB2liuT1f9QUgzDCicMkjcrZe7kE=";
+    src = fetchFromCodeberg {
+      owner = "letoram";
+      repo = "arcan";
+      rev = "8af5b822847f3a9e90cede94937c477fac2c7e48";
+      hash = "sha256-aPl4jvGnmJ3r+ZpfgwctqT7DsFg3/TfD55Ce4LC10jA=";
     };
+    # src = fetchfossil {
+    #   url = "https://chiselapp.com/user/letoram/repository/arcan";
+    #   rev = "2a5c5240fe2d1c27";
+    #   hash = "sha256-Y57xSwLw+L0A2zDuB2liuT1f9QUgzDCicMkjcrZe7kE=";
+    # };
   };
   letoram-openal.src = fetchFromGitHub {
     owner = "letoram";
