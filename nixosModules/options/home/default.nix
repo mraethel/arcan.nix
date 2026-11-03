@@ -20,21 +20,19 @@ in
         message = "Configure home-manager to use this option!";
       }
       {
-        assertion = builtins.all (user: config.users.users ? user) config.users.arcanUsers;
+        assertion = builtins.all (user: config.users.users.${user}.enable) config.users.arcanUsers;
         message = "Arcan users must exist!";
       }
     ];
     home-manager.users = lib.mkMerge (
       map (user: {
-        ${user}.imports = [
-          {
-            programs.arcan = {
-              enable = true;
-              appls = lib.optionals (cfg.durden.enable) [ "durden" ];
-            };
-          }
-        ]
-        ++ [ arcan.homeModules.options.default ];
+        ${user} = {
+          imports = [ arcan.homeModules.options.default ];
+          programs.arcan = {
+            enable = true;
+            appls = lib.optionals (cfg.durden.enable) [ "durden" ];
+          };
+        };
       }) config.users.arcanUsers
     );
   };
