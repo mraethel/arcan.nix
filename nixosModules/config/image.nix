@@ -29,8 +29,8 @@ in {
       installer.cloneConfig = false;
       isoImage.appendToMenuLabel = " Live System";
       system.nixos = {
-        distroName = "Arcan";
-        version = pkgs.arcan.version;
+        distroName = "Durden";
+        version = pkgs.durden.version;
       };
     };
     "x86_64-linux" = default // {
@@ -68,5 +68,9 @@ in {
     };
   };
   time.timeZone = "Europe/Berlin";
-  users.users.nixos.extraGroups = [ "input" ];
+  users.users.nixos.extraGroups = [
+    "audio"
+    "input"
+    "video"
+  ];
 }

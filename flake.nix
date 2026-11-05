@@ -59,10 +59,12 @@
             cat9
             durden
             home
+            qtarcan
             xarcan
           ];
           durden = import nixosModules/options/durden;
           home = import nixosModules/options/home;
+          qtarcan = import nixosModules/options/qtarcan;
           xarcan = import nixosModules/options/xarcan;
         };
       };
