@@ -35,5 +35,16 @@ in
         };
       }) config.users.arcanUsers
     );
+    users.users = lib.mkMerge (
+      map (user: {
+        ${user} = {
+          extraGroups = [
+            "audio"
+            "input"
+            "video"
+          ];
+        };
+      }) config.users.arcanUsers
+    );
   };
 }
