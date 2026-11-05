@@ -17,6 +17,12 @@ in
     durden = {
       enable = true;
       package = arcanPkgs.durden;
+      config = {
+        hide_titlebar = true;
+        sbar_alpha = 1;
+        sbar_autohide = 1;
+        titlebar_statusbar = true;
+      };
     };
     enable = true;
     loginShell.enable = true;

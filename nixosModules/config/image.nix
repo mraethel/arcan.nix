@@ -49,17 +49,9 @@ in {
     overlays = [ (final: prev: { lib = prev.lib // localLib { inherit lib; }; }) ];
   };
   programs.arcan = {
-    durden = {
-      autorun.extra = ''
-        dispatch_set("m1_q","/global/open/target/launch_" .. string.hexenc(util.hash("qutebrowser")));
-      '';
-      config = {
-        hide_titlebar = true;
-        sbar_alpha = 1;
-        sbar_autohide = 1;
-        titlebar_statusbar = true;
-      };
-    };
+    durden.autorun.extra = ''
+      dispatch_set("m1_q","/global/open/target/launch_" .. string.hexenc(util.hash("qutebrowser")));
+    '';
     loginShell.targets.qutebrowser = {
       argv = [ "${arcanPkgs.qutebrowser}/bin/qutebrowser" ];
       bfrm = "BIN";
