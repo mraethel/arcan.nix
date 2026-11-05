@@ -6,7 +6,7 @@
 }:
 let
   arcanPkgs = arcan.legacyPackages.${pkgs.system};
-  qtarcanPkgs = qtarcan.legacyPackages.${pkgs.system};
+  qtarcanPkgs = qtarcan.packages.${pkgs.system};
 in
 {
   programs.arcan = {
